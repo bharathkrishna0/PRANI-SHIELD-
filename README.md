@@ -65,3 +65,110 @@ Only activated when sensor nodes detect suspicious activity.
 ---
 
 ### 🔹 Detection Flow
+
+Sensor Trigger
+↓
+Camera Activation
+↓
+AI Verification (Animal / Human)
+↓
+Alert System + Gate Control
+
+### 🔹 3️⃣ Actuation & Alerts
+
+- SG90 Servo → Gate/Latch Lock  
+- RGB LED → Visual Alert  
+- Active Buzzer → Audible Warning  
+- I2C 16x2 LCD → Local Status Display  
+- Web Dashboard → Remote Monitoring  
+
+---
+
+## 🧠 Edge AI Integration
+
+The Raspberry Pi Camera connects to the Grove Vision AI module.
+
+- Runs object detection locally  
+- Detects animals (e.g., elephants)  
+- Sends bounding box + class data via UART  
+- Works fully offline  
+
+This ensures:
+- Low latency  
+- No internet dependency  
+- Reduced false alarms  
+
+---
+
+## 🔌 Hardware Used
+
+| Component | Purpose |
+|------------|----------|
+| ESP32 / ESP32-S3 | Control & WiFi |
+| Raspberry Pi Camera Rev 1.3 | Image Capture |
+| Grove Vision AI | Edge AI Inference |
+| Vibration Sensor | Footstep Detection |
+| Sound Sensor | Audio Activity Detection |
+| SG90 Servo | Smart Latch Control |
+| RGB LED | Alert Indicator |
+| Active Buzzer | Audible Alert |
+| I2C 16x2 LCD | Local Status Display |
+| 18650 Li-ion Battery | Portable Power |
+
+---
+
+## 🌐 Web Dashboard
+
+Hosted locally on ESP32.
+
+Features:
+- Real-time sensor monitoring  
+- Threat detection status  
+- Alert visualization  
+- Camera activation indicator  
+- JSON API endpoint (`/status`)  
+
+Works fully offline via local WiFi.
+
+---
+
+## 🔋 Power Optimization Strategy
+
+- Deep sleep for sensor nodes  
+- Event-driven camera activation  
+- No continuous streaming  
+- Battery-optimized design  
+- Solar-ready architecture  
+
+---
+
+## 💰 Cost Efficiency (Rural-Focused)
+
+| Node Type | Approx Cost (INR) |
+|------------|------------------|
+| Sensor Node | ₹600–₹700 |
+| AI Vision Node | ₹3500–₹4000 |
+
+Shared deployment reduces per-household cost significantly.
+
+---
+
+## 🚀 Future Scope
+
+- Anti-poaching monitoring  
+- Wildlife corridor analytics  
+- Forest perimeter security  
+- Solar-powered deployment  
+- Predictive conflict hotspot mapping  
+
+---
+
+## 🛠️ Setup Instructions
+
+### 1️⃣ Upload Firmware
+Flash ESP32 using Arduino IDE.
+
+### 2️⃣ Configure WiFi
+```cpp
+const char* ssid = "YOUR_WIFI";
+const char* password = "YOUR_PASSWORD";
